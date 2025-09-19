@@ -1,0 +1,22 @@
+
+
+
+{
+  "name": "smart-room-setup",
+  "version": "1.0.0",
+  "description": "A smart room assistant setup whereby a user can control different components",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kavini",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
+
+
+
