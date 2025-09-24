@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Room Assistant</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Smart Room Assistant</h1>
+    <div class="bulk-controls">
+      <button id="btnAllOn">All Lights ON</button>
+      <button id="btnAllOff">All Lights OFF</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="rooms">
+      <article class="room-card" data-room-id="1">
+        <h2 id="room1-name">Room 1</h2>
+        <img id="room1-bulb" src="/img/bulb-off.svg" alt="light" width="48" height="48" />
+        <div class="meta">
+          <span>Temp: <strong id="room1-temp">--</strong> °C</span>
+          <span>Light: <span class="status-pill off" id="room1-light-pill">off</span></span>
+        </div>
+        <button class="toggle-btn" id="room1-toggle">Turn On</button>
+      </article>
+
+      <article class="room-card" data-room-id="2">
+        <h2 id="room2-name">Room 2</h2>
+        <img id="room2-bulb" src="/img/bulb-off.svg" alt="light" width="48" height="48" />
+        <div class="meta">
+          <span>Temp: <strong id="room2-temp">--</strong> °C</span>
+          <span>Light: <span class="status-pill off" id="room2-light-pill">off</span></span>
+        </div>
+        <button class="toggle-btn" id="room2-toggle">Turn On</button>
+      </article>
+    </section>
+
+    <section class="chart-card">
+      <canvas id="tempChart"></canvas>
+    </section>
+  </main>
+
+  <!-- Chart.js, then time adapter, then your app JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
