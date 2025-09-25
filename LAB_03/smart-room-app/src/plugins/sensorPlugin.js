@@ -4,7 +4,7 @@ Implementation: Implement the function to record temperature read-
 ings into the database. This file will be used in your routes to handle
 temperature logging.
 */
-
+//
 // Import the database connection pool
 const pool = require('../db');
 
@@ -34,7 +34,7 @@ const startLogging = () => {
   setInterval(async () => {
     const res = await pool.query('SELECT id, name FROM rooms');
     for (const row of res.rows) {
-      await logTemperature(row.id, row.name);
+      await logTemperature(row.id, row.name); // log one reading per room
     }
   }, 10_000); // every 10 seconds
 };

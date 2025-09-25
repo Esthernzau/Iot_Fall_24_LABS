@@ -1,12 +1,19 @@
-// Imports …
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const path = require('path');
-const roomRoutes = require('./routes/roomRoutes');
-const { startLogging } = require('./plugins/sensorPlugin');
+/*
+This is the main entry point for the Smart Room application.
+It sets up the Express server, middleware, routes, and starts the temperature logging process.
+It also serves the frontend dashboard and provides health check endpoints
+*/
 
+// Imports …
+require('dotenv').config(); // load .env config first
+const express = require('express'); // Express framework
+const cors = require('cors'); // CORS middleware
+const morgan = require('morgan'); // HTTP request logger middleware
+const path = require('path'); // Node.js path module
+const roomRoutes = require('./routes/roomRoutes'); // Room-related API routes
+const { startLogging } = require('./plugins/sensorPlugin'); // Temperature logging plugin
+
+// Create Express app
 const app = express();
 
 //  Middleware setup
@@ -24,8 +31,8 @@ app.use('/api', (req, res, next) => {
 });
 
 // Views & static files
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '..', 'views'));
+app.set('view engine', 'ejs'); // use EJS templates
+app.set('views', path.join(__dirname, '..', 'views')); 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Routes

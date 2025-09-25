@@ -25,6 +25,7 @@ async function getRooms() {
   return safeJson(res);
 }
 
+// 
 async function setLight(id, on) {
   const res = await fetch(`${api}/${id}/light`, {
     method: 'PATCH',
@@ -34,6 +35,7 @@ async function setLight(id, on) {
   return safeJson(res);
 }
 
+// All lights on or off
 async function allLights(on) {
   const path = on ? 'on' : 'off';
   await fetch(`${api}/lights/${path}`, { method: 'PATCH' });
@@ -66,8 +68,9 @@ function updateRoomCard(room, cardNo, latestTemp) {
   const tempEl = document.querySelector(`#room${cardNo}-temp`);
   const btnEl  = document.querySelector(`#room${cardNo}-toggle`);
 
-  if (nameEl) nameEl.textContent = room.name;
 
+  if (nameEl) nameEl.textContent = room.name;
+// Light status
   const isOn = !!room.light;
   const lightText = isOn ? 'on' : 'off';
   if (pillEl) {
@@ -76,15 +79,17 @@ function updateRoomCard(room, cardNo, latestTemp) {
     pillEl.classList.toggle('off', !isOn);
   }
 
+// Bulb image & button text 
   if (bulbEl) bulbEl.src = isOn ? '/img/bulb-on.svg' : '/img/bulb-off.svg';
   if (btnEl)  btnEl.textContent = isOn ? 'Turn Off' : 'Turn On';
-
+// Latest temperature
   if (tempEl) {
     const v = Number(latestTemp);
     tempEl.textContent = Number.isFinite(v) ? v.toFixed(1) : '--'; // 1 decimal on cards
   }
 }
 
+// Mark a card as having no room (e.g. if only 1 room defined)
 function markCardMissing(cardNo) {
   const nameEl = document.querySelector(`#room${cardNo}-name`);
   const pillEl = document.querySelector(`#room${cardNo}-light-pill`);
@@ -92,6 +97,7 @@ function markCardMissing(cardNo) {
   const tempEl = document.querySelector(`#room${cardNo}-temp`);
   const btnEl  = document.querySelector(`#room${cardNo}-toggle`);
 
+// Clear all fields
   if (nameEl) nameEl.textContent = 'No room found';
   if (pillEl) { pillEl.textContent = '--'; pillEl.classList.remove('on'); pillEl.classList.add('off'); }
   if (tempEl) tempEl.textContent = '--';

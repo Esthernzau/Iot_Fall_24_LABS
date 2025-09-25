@@ -10,8 +10,8 @@ require('dotenv').config();
 
 // Create a new pool instance with connection details from environment variables
 const pool = new Pool({
-  host: process.env.PGHOST,
-  port: process.env.PGPORT,
+  host: process.env.PGHOST, 
+  port: process.env.PGPORT, 
   database: process.env.PGDATABASE,
   user: process.env.PGUSER,
   password: process.env.PGPASSWORD,
